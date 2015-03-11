@@ -12,6 +12,7 @@
 #import "XMLDictionary.h"
 #import "UserInformation.h"
 #import "SidePanelViewController.h"
+#import "IQKeyboardManager.h"
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
@@ -34,25 +35,26 @@
     {
         [[_buttonSignIn layer]setMasksToBounds:YES];
         [[_buttonSignIn layer] setCornerRadius:4.0];
-        [[TFUtility sharedInstance] setLeftPadding:_textFieldUserName imageName:nil width:7];
-        [[TFUtility sharedInstance] setLeftPadding:_textFieldPassword imageName:nil width:7];
+        [[TFUtility sharedInstance] setLeftPadding:_textFieldUserName imageName:nil width:2];
+        [[TFUtility sharedInstance] setLeftPadding:_textFieldPassword imageName:nil width:2];
         [[_butttonRememberMe layer] setBorderWidth:2.0];
         [[_butttonRememberMe layer] setCornerRadius:12.5];
         [[_butttonRememberMe layer] setMasksToBounds:YES];
         [[_butttonRememberMe layer] setBorderColor:[UIColor colorWithRed:39.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1.0].CGColor];
         self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"Change" style:UIBarButtonItemStyleDone target:self action:@selector(registerAction:)];
+        [[_outerViewOfLogin layer] setCornerRadius:7.0];
+        [[_outerViewOfLogin layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+        [[_outerViewOfLogin layer] setBorderWidth:0.5];
     }
-    
     if (IS_IPHONE_5)
     {
-        [_distanceBWNViewAndLogo setConstant:170];
     }
-
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
+    [[IQKeyboardManager sharedManager] setEnable:NO];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     if([[[NSUserDefaults standardUserDefaults] objectForKey:@"email"] length]>0)
     {
         _textFieldUserName.text=[[NSUserDefaults standardUserDefaults] objectForKey:@"email"];
@@ -65,17 +67,20 @@
         _textFieldPassword.text=@"";
         [_butttonRememberMe setTag:0];
         [_butttonRememberMe setBackgroundImage:nil forState:UIControlStateNormal];
-        
-        
     }
 
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[IQKeyboardManager sharedManager] setEnable:YES];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -93,6 +98,8 @@
         [_labelErrorMessage setText:@"*Please Enter Password"];
     }else
     {
+//        [_textFieldUserName resignFirstResponder];
+//        [_textFieldPassword resignFirstResponder];
         [self callWebSerivceWithParameter:[self PreareDictionary]];
     }
 }
@@ -138,10 +145,8 @@
         NSDictionary *soapBody=[dict valueForKey:@"soap:Body"];
         NSDictionary *loginResponce=[soapBody valueForKey:@"LoginResponse"];
         NSDictionary *loginResult=[loginResponce valueForKey:@"LoginResult"];
-        
         NSString *ErrorCode=[loginResult valueForKey:@"ErrorCode"];
         NSString *Success=[loginResult valueForKey:@"Success"];
-
         [HUDManager hideHUD];
         if([ErrorCode isEqualToString:@"1"] || [Success isEqualToString:@"false"])
         {
@@ -166,4 +171,10 @@
 {
     [_labelErrorMessage setText:@""];
 }
+
+#pragma mark- -ButtonAction-
+- (IBAction)forgotPasswordAction:(id)sender {
+    
+}
+
 @end

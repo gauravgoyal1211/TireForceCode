@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-@interface PricemarkUpViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface PricemarkUpViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView1;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @end

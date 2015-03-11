@@ -11,4 +11,5 @@
 @interface AppSettingDetailViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UILabel *labelDetail;
 @property (nonatomic) NSInteger buttonIndex;
+@property (weak, nonatomic) IBOutlet UILabel *LabelTitle;
 @end

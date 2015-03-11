@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE1DE2281AA87A570092134B /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1DE2271AA87A570092134B /* UIViewController+ScrollingNavbar.m */; };
+		AE66F6271AAAE510008B32B0 /* ForgotMyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE66F6261AAAE510008B32B0 /* ForgotMyPasswordViewController.m */; };
 		BD215D0F1A8E14F3003FA011 /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD215D0C1A8E14F3003FA011 /* JASidePanelController.m */; };
 		BD215D101A8E14F3003FA011 /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD215D0E1A8E14F3003FA011 /* UIViewController+JASidePanel.m */; };
 		BD215D181A8E1511003FA011 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD215D131A8E1511003FA011 /* SideMenuCell.m */; };
@@ -84,6 +86,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE1DE2261AA87A570092134B /* UIViewController+ScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ScrollingNavbar.h"; sourceTree = "<group>"; };
+		AE1DE2271AA87A570092134B /* UIViewController+ScrollingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScrollingNavbar.m"; sourceTree = "<group>"; };
+		AE66F6251AAAE510008B32B0 /* ForgotMyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotMyPasswordViewController.h; sourceTree = "<group>"; };
+		AE66F6261AAAE510008B32B0 /* ForgotMyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotMyPasswordViewController.m; sourceTree = "<group>"; };
 		BD215D0B1A8E14F3003FA011 /* JASidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASidePanelController.h; sourceTree = "<group>"; };
 		BD215D0C1A8E14F3003FA011 /* JASidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASidePanelController.m; sourceTree = "<group>"; };
 		BD215D0D1A8E14F3003FA011 /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JASidePanel.h"; sourceTree = "<group>"; };
@@ -287,6 +293,8 @@
 				BD7C11921A9B1C850010E7DF /* AddSupplierViewController.m */,
 				BDD527B31A9C4711008AE238 /* ChangePasswordViewController.h */,
 				BDD527B41A9C4711008AE238 /* ChangePasswordViewController.m */,
+				AE66F6251AAAE510008B32B0 /* ForgotMyPasswordViewController.h */,
+				AE66F6261AAAE510008B32B0 /* ForgotMyPasswordViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -498,6 +506,8 @@
 		BDDEBC811A93269C0029B5AA /* customTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				AE1DE2261AA87A570092134B /* UIViewController+ScrollingNavbar.h */,
+				AE1DE2271AA87A570092134B /* UIViewController+ScrollingNavbar.m */,
 				BDDEBC7E1A9323280029B5AA /* CustomTabBarController.h */,
 				BDDEBC7F1A9323280029B5AA /* CustomTabBarController.m */,
 			);
@@ -638,6 +648,7 @@
 				BD215D241A8E20FB003FA011 /* AppSettingViewController.m in Sources */,
 				BD99936C1A8E006C00E44624 /* AFHTTPSessionManager.m in Sources */,
 				BD99933F1A8E000600E44624 /* IQToolbar.m in Sources */,
+				AE66F6271AAAE510008B32B0 /* ForgotMyPasswordViewController.m in Sources */,
 				BD9993411A8E000600E44624 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				BD99936F1A8E006C00E44624 /* AFURLConnectionOperation.m in Sources */,
 				BD9993701A8E006C00E44624 /* AFURLRequestSerialization.m in Sources */,
@@ -649,6 +660,7 @@
 				BD7C11931A9B1C850010E7DF /* AddSupplierViewController.m in Sources */,
 				BD9993711A8E006C00E44624 /* AFURLResponseSerialization.m in Sources */,
 				BD215D0F1A8E14F3003FA011 /* JASidePanelController.m in Sources */,
+				AE1DE2281AA87A570092134B /* UIViewController+ScrollingNavbar.m in Sources */,
 				BD5FBC521A94CE7F009015B6 /* EditPriceMarkupViewController.m in Sources */,
 				BD99937D1A8E009100E44624 /* UserInformation.m in Sources */,
 				BD9992FF1A8DFFC900E44624 /* AppDelegate.m in Sources */,
@@ -722,8 +734,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -766,8 +778,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -791,8 +803,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
 				INFOPLIST_FILE = TireForce/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -805,8 +818,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
 				INFOPLIST_FILE = TireForce/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -819,8 +833,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -841,8 +855,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Go Tire Inc. (34HKDJFUM2)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

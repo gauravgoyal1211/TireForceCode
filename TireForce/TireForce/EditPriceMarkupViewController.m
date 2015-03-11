@@ -116,8 +116,6 @@ extern bool needUpdates;
                                               encoding:NSUTF8StringEncoding];
     NSDictionary *dict=@{@"userid":userId,@"token":token,@"ParentId":ParentId,@"CostJson":CostJson};
  [[WebServiceHandler webServiceHandler] updateTirePrice:dict completionHandlerSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-   
-
      NSError *error = nil;
      NSString *jsonString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
      jsonString = [jsonString stringByReplacingOccurrencesOfString:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>" withString:@""];
@@ -128,7 +126,7 @@ extern bool needUpdates;
                                                                   options:kNilOptions
                                                                     error:&error];
 
-     BOOL successH=[jsonResponse valueForKey:@"success"];
+     BOOL successH=[[jsonResponse valueForKey:@"success"] boolValue];
      if(successH==YES)
      {
          [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Information Updated" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
@@ -139,6 +137,11 @@ extern bool needUpdates;
     } completionHandlerFailure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [HUDManager hideHUD];
     }];
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [textField setKeyboardType:UIKeyboardTypeDecimalPad];
+    return YES;
 }
 
 /*

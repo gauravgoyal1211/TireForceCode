@@ -140,7 +140,6 @@
                 [cell.buttonToActiveState setBackgroundImage:[UIImage imageNamed:@"checkGray"] forState:UIControlStateNormal];
             }else
                 [cell.buttonToActiveState setBackgroundImage:nil forState:UIControlStateNormal];
-            
             return cell;
         }
 }
@@ -240,49 +239,52 @@
 }
 - (IBAction)saveButtonAction:(UIButton *)sender {
     
-    NSDictionary *dict=[supplierArray objectAtIndex:sender.tag];
-    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableview];
-    NSIndexPath *indexPath = [self.tableview indexPathForRowAtPoint:buttonPosition];
-    DataConnnectorCell *cell=(DataConnnectorCell *)[self.tableview cellForRowAtIndexPath:indexPath];
-    
-    NSLog(@"%ld",(long)cell.buttonToActiveState.tag);
-  
-    NSString *ID=[NSString stringWithFormat:@"%@",[dict valueForKey:@"ID"]];
-    NSString *user=[NSString stringWithFormat:@"%@",cell.textFieldUserName.text];
-    
-    
-    NSString *supplierid=[NSString stringWithFormat:@"%@",[reversedictForAvailableSuppliers valueForKey:cell.textFieldSupplierName.text]];
-    
-    int val=(int)cell.buttonToActiveState.tag;
-    BOOL active=(BOOL)val;
-  
-    NSDictionary *dictNew=@{
-                                   @"userid":[UserInformation sharedInstance].userId,
-                                   @"token":[UserInformation sharedInstance].token,
-                                   @"User":user,
-                                   @"pass":@"123",
-                                   @"ID":ID,
-                                   @"supplierid":supplierid,
-                                   @"active":(active)?@"true":@"false"
-                            };
-    [HUDManager showHUDWithText:PleaseWait];
-    [[WebServiceHandler webServiceHandler] updateSupplier:dictNew completionHandlerSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Information Saved Successfully" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
-        NSError *error = nil;
-        NSString *jsonString = [[NSString alloc] initWithData:operation.responseData encoding:NSUTF8StringEncoding];
-        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>" withString:@""];
-        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"<string xmlns=\"http://tempuri.org/\">" withString:@""];
-        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"</string>" withString:@""];
-        NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
-                                                                     options:kNilOptions
-                                                                       error:&error];
-        NSLog(@"%@",jsonResponse);
-        [self callWebService];
-        [HUDManager hideHUD];
-    } completionHandlerFailure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [HUDManager hideHUD];
-    }];
+    @try {
+        NSDictionary *dict=[supplierArray objectAtIndex:sender.tag];
+        CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableview];
+        NSIndexPath *indexPath = [self.tableview indexPathForRowAtPoint:buttonPosition];
+        DataConnnectorCell *cell=(DataConnnectorCell *)[self.tableview cellForRowAtIndexPath:indexPath];
+        NSLog(@"%ld",(long)cell.buttonToActiveState.tag);
+        NSString *ID=[NSString stringWithFormat:@"%@",[dict valueForKey:@"ID"]];
+        NSString *user=[NSString stringWithFormat:@"%@",cell.textFieldUserName.text];
+        NSString *supplierid=[NSString stringWithFormat:@"%@",[reversedictForAvailableSuppliers valueForKey:cell.textFieldSupplierName.text]];
+        int val=(int)cell.buttonToActiveState.tag;
+        BOOL active=(BOOL)val;
+        NSDictionary *dictNew=@{
+                                @"userid":[UserInformation sharedInstance].userId,
+                                @"token":[UserInformation sharedInstance].token,
+                                @"User":user,
+                                @"pass":@"123",
+                                @"ID":ID,
+                                @"supplierid":supplierid,
+                                @"active":(active)?@"true":@"false"
+                                };
+        [HUDManager showHUDWithText:PleaseWait];
+        [[WebServiceHandler webServiceHandler] updateSupplier:dictNew completionHandlerSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Information Saved Successfully" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            NSError *error = nil;
+            NSString *jsonString = [[NSString alloc] initWithData:operation.responseData encoding:NSUTF8StringEncoding];
+            jsonString = [jsonString stringByReplacingOccurrencesOfString:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>" withString:@""];
+            jsonString = [jsonString stringByReplacingOccurrencesOfString:@"<string xmlns=\"http://tempuri.org/\">" withString:@""];
+            jsonString = [jsonString stringByReplacingOccurrencesOfString:@"</string>" withString:@""];
+            NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
+                                                                         options:kNilOptions
+                                                                           error:&error];
+            NSLog(@"%@",jsonResponse);
+            [self callWebService];
+            [HUDManager hideHUD];
+        } completionHandlerFailure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [HUDManager hideHUD];
+        }];
+    }
+    @catch (NSException *exception) {
+     
+        
+    }
+    @finally {
+        
+    }
 }
 
 #pragma mark- -AddSupplierDelegateMethode-

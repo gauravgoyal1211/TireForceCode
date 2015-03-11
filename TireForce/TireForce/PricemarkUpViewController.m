@@ -237,11 +237,13 @@ BOOL needUpdates;
 #pragma mark- -WebserviceCalling-
 -(void)webServiceCalling
 {
+    [self.tableView1 setHidden:YES];
     NSString *userId=[UserInformation sharedInstance].userId;
     NSString *token=[UserInformation sharedInstance].token;
     NSDictionary *dict=@{@"userid":userId,@"token":token};
     [HUDManager showHUDWithText:PleaseWait];
     [[WebServiceHandler webServiceHandler] getTirePriceWith:dict completionHandlerSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.tableView1 setHidden:NO];
         NSError *error = nil;
         NSString *jsonString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         jsonString = [jsonString stringByReplacingOccurrencesOfString:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>" withString:@""];
@@ -279,5 +281,4 @@ BOOL needUpdates;
     addPart.parentId=parentId;
     [self.navigationController pushViewController:addPart animated:YES];
 }
-
 @end

@@ -61,6 +61,12 @@ extern BOOL needToUpdate;
         [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Please Enter Required Information" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
     }
 }
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if(textField==_textFieldPartPrice)
+    [textField setKeyboardType:UIKeyboardTypeDecimalPad];
+    return YES;
+}
 
 /*
 #pragma mark - Navigation

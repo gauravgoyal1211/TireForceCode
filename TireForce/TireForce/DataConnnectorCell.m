@@ -19,6 +19,10 @@
     
     [[_ButtonSave layer] setMasksToBounds:YES];
     [[_ButtonSave layer] setCornerRadius:4.0];
+    
+    [[_buttonTest layer] setMasksToBounds:YES];
+    [[_buttonTest layer] setCornerRadius:4.0];
+
 
 
 }

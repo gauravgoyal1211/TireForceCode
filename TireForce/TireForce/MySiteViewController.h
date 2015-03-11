@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-@interface MySiteViewController : BaseViewController<UIWebViewDelegate>
+@interface MySiteViewController : BaseViewController<UIWebViewDelegate,UIPopoverPresentationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 

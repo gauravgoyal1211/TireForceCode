@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
 @property (weak, nonatomic) IBOutlet UIButton *buttonToActiveState;
 @property (weak, nonatomic) IBOutlet UIButton *ButtonSave;
+@property (weak, nonatomic) IBOutlet UIButton *buttonTest;
 
 @end

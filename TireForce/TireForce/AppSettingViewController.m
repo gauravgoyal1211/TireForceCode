@@ -75,26 +75,25 @@
 
     if(indexPath.row==0)
     {
-        cell.labelTitle.text=@"Quote-Only Mode (tires)";
+        cell.labelTitle.text=@"Quote Only (all tires in the market)";
         cell.switchForSetting.tag=1;
         cell.buttonInformation.tag=5;
     }
     else if(indexPath.row==1)
     {
-        cell.labelTitle.text=@"Quote-Only Mode (tires & wheels)";
+        cell.labelTitle.text=@"Quote Only (tires from my suppliers) ";
         cell.switchForSetting.tag=2;
         cell.buttonInformation.tag=6;
     }
     else if(indexPath.row==2)
     {
-        cell.labelTitle.text=@"Live Quote";
+        cell.labelTitle.text=@"Live Pricing (tires from my suppliers)";
         cell.switchForSetting.tag=3;
         cell.buttonInformation.tag=7;
-
     }
     else if(indexPath.row==3)
     {
-        cell.labelTitle.text=@"Transactional Mode (tires)";
+        cell.labelTitle.text=@"Ecommerce (not available yet)";
         cell.switchForSetting.tag=4;
         cell.buttonInformation.tag=8;
     }

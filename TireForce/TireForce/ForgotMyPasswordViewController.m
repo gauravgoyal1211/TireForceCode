@@ -1,30 +1,25 @@
 
-
 //
-//  BaseViewController.m
+//  ForgotMyPasswordViewController.m
 //  TireForce
 //
-//  Created by CANOPUS5 on 18/02/15.
+//  Created by CANOPUS16 on 07/03/15.
 //  Copyright (c) 2015 CANOPUS5. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "ForgotMyPasswordViewController.h"
 
-@interface BaseViewController ()
+@interface ForgotMyPasswordViewController ()
 
 @end
 
-@implementation BaseViewController
+@implementation ForgotMyPasswordViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(10, 0, 100, 35)];
-    UIImageView *imgView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Tire Force_Logo_Login"]];
-    [imgView setFrame:CGRectMake(0, 0, 120, 35)];
-    [view setBackgroundColor:[UIColor clearColor]];
-    [view addSubview:imgView];
-    self.navigationItem.titleView=view;
-
+    [[_buttonSend layer] setCornerRadius:4.0];
+    [[_buttonSend layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+    [[_buttonSend layer] setBorderWidth:1];
     // Do any additional setup after loading the view.
 }
 
@@ -32,7 +27,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)sendButtonAction:(id)sender {
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+     [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
 /*
 #pragma mark - Navigation
 
