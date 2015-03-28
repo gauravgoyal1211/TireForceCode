@@ -70,6 +70,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return reportArray.count;
+   
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -128,7 +129,6 @@
         {
             reportArray=[reportDict valueForKey:@"QuoteReport"];
         }
-        
         
         [self.tableview reloadData];
         [HUDManager hideHUD];

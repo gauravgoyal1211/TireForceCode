@@ -44,6 +44,7 @@
                              "<IsMh5>%d</IsMh5>\n"
                              "<token>%@</token>\n"
                              "</Login>\n"
+                       
                              "</soap:Body>\n"
                              "</soap:Envelope>\n",name, password, NO, token];
 //    http://54.68.159.18/UserControl.asmx?op=Login
@@ -469,4 +470,55 @@
     }];
     
 }
+
+
+-(void)SearchTire:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure
+{
+
+
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/xml"];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    
+    [manager POST:@"http://54.68.159.18/SearchTire.asmx/GetSearchTire" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandlerSuccess(operation,responseObject);
+             
+        });
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandlerFailure(operation,error);
+        });
+        
+    }];
+   
+}
+
+-(void)GetPriceForTire:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/xml"];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    //http://54.68.159.18/GetTirePrice.asmx?op=GetCost3dotapiNew
+    [manager POST:@"http://54.68.159.18/GetTirePrice.asmx/GetCost3dotapiNew" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandlerSuccess(operation,responseObject);
+        });
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandlerFailure(operation,error);
+        });
+        
+    }];
+}
+
 @end

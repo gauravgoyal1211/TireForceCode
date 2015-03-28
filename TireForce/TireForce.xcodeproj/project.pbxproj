@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D24A7441AC441020050E716 /* ForwordActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D24A7431AC441020050E716 /* ForwordActionViewController.m */; };
+		9D756E771AB16E3C001956D6 /* SearchResultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D756E761AB16E3C001956D6 /* SearchResultDetailViewController.m */; };
+		9D756E7A1AB16EA3001956D6 /* SearchResultDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D756E791AB16EA3001956D6 /* SearchResultDetailTableViewCell.m */; };
+		9DD190711ABC5AAD000BAD77 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1906F1ABC5AAD000BAD77 /* search.png */; };
+		9DD190721ABC5AAD000BAD77 /* search1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD190701ABC5AAD000BAD77 /* search1.png */; };
+		9DD665081AB08666001B1E2C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD665071AB08666001B1E2C /* SearchViewController.m */; };
+		9DD6650B1AB08D22001B1E2C /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6650A1AB08D22001B1E2C /* SearchResultViewController.m */; };
+		9DD6650E1AB09442001B1E2C /* SearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6650D1AB09442001B1E2C /* SearchResultTableViewCell.m */; };
+		9DE8154D1ABB05DD00BA3CC0 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE815481ABB05DD00BA3CC0 /* FPPopoverController.m */; };
+		9DE8154E1ABB05DD00BA3CC0 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE8154A1ABB05DD00BA3CC0 /* FPPopoverView.m */; };
+		9DE8154F1ABB05DD00BA3CC0 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE8154C1ABB05DD00BA3CC0 /* FPTouchView.m */; };
+		9DE815531ABB086A00BA3CC0 /* popViewTableControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE815521ABB086A00BA3CC0 /* popViewTableControllerTableViewController.m */; };
 		AE1DE2281AA87A570092134B /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1DE2271AA87A570092134B /* UIViewController+ScrollingNavbar.m */; };
 		AE66F6271AAAE510008B32B0 /* ForgotMyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE66F6261AAAE510008B32B0 /* ForgotMyPasswordViewController.m */; };
 		BD215D0F1A8E14F3003FA011 /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD215D0C1A8E14F3003FA011 /* JASidePanelController.m */; };
@@ -86,6 +98,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D24A7421AC441020050E716 /* ForwordActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForwordActionViewController.h; sourceTree = "<group>"; };
+		9D24A7431AC441020050E716 /* ForwordActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForwordActionViewController.m; sourceTree = "<group>"; };
+		9D756E751AB16E3C001956D6 /* SearchResultDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultDetailViewController.h; sourceTree = "<group>"; };
+		9D756E761AB16E3C001956D6 /* SearchResultDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultDetailViewController.m; sourceTree = "<group>"; };
+		9D756E781AB16EA3001956D6 /* SearchResultDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultDetailTableViewCell.h; sourceTree = "<group>"; };
+		9D756E791AB16EA3001956D6 /* SearchResultDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultDetailTableViewCell.m; sourceTree = "<group>"; };
+		9DD1906F1ABC5AAD000BAD77 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		9DD190701ABC5AAD000BAD77 /* search1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search1.png; sourceTree = "<group>"; };
+		9DD665061AB08666001B1E2C /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		9DD665071AB08666001B1E2C /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		9DD665091AB08D22001B1E2C /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
+		9DD6650A1AB08D22001B1E2C /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
+		9DD6650C1AB09442001B1E2C /* SearchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultTableViewCell.h; sourceTree = "<group>"; };
+		9DD6650D1AB09442001B1E2C /* SearchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultTableViewCell.m; sourceTree = "<group>"; };
+		9DE815471ABB05DD00BA3CC0 /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
+		9DE815481ABB05DD00BA3CC0 /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
+		9DE815491ABB05DD00BA3CC0 /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
+		9DE8154A1ABB05DD00BA3CC0 /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
+		9DE8154B1ABB05DD00BA3CC0 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
+		9DE8154C1ABB05DD00BA3CC0 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
+		9DE815511ABB086A00BA3CC0 /* popViewTableControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popViewTableControllerTableViewController.h; sourceTree = "<group>"; };
+		9DE815521ABB086A00BA3CC0 /* popViewTableControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = popViewTableControllerTableViewController.m; sourceTree = "<group>"; };
+		9DE815551ABB0A4300BA3CC0 /* ARCMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
 		AE1DE2261AA87A570092134B /* UIViewController+ScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ScrollingNavbar.h"; sourceTree = "<group>"; };
 		AE1DE2271AA87A570092134B /* UIViewController+ScrollingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScrollingNavbar.m"; sourceTree = "<group>"; };
 		AE66F6251AAAE510008B32B0 /* ForgotMyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotMyPasswordViewController.h; sourceTree = "<group>"; };
@@ -239,6 +274,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DE815451ABB059700BA3CC0 /* PopOverController */ = {
+			isa = PBXGroup;
+			children = (
+				9DE815541ABB0A1D00BA3CC0 /* ARCMacros */,
+				9DE815501ABB084900BA3CC0 /* popViewTableController */,
+				9DE815461ABB05DD00BA3CC0 /* FPPOPOVERCONTROLLER */,
+			);
+			name = PopOverController;
+			sourceTree = "<group>";
+		};
+		9DE815461ABB05DD00BA3CC0 /* FPPOPOVERCONTROLLER */ = {
+			isa = PBXGroup;
+			children = (
+				9DE815471ABB05DD00BA3CC0 /* FPPopoverController.h */,
+				9DE815481ABB05DD00BA3CC0 /* FPPopoverController.m */,
+				9DE815491ABB05DD00BA3CC0 /* FPPopoverView.h */,
+				9DE8154A1ABB05DD00BA3CC0 /* FPPopoverView.m */,
+				9DE8154B1ABB05DD00BA3CC0 /* FPTouchView.h */,
+				9DE8154C1ABB05DD00BA3CC0 /* FPTouchView.m */,
+			);
+			path = FPPOPOVERCONTROLLER;
+			sourceTree = "<group>";
+		};
+		9DE815501ABB084900BA3CC0 /* popViewTableController */ = {
+			isa = PBXGroup;
+			children = (
+				9DE815511ABB086A00BA3CC0 /* popViewTableControllerTableViewController.h */,
+				9DE815521ABB086A00BA3CC0 /* popViewTableControllerTableViewController.m */,
+			);
+			name = popViewTableController;
+			sourceTree = "<group>";
+		};
+		9DE815541ABB0A1D00BA3CC0 /* ARCMacros */ = {
+			isa = PBXGroup;
+			children = (
+				9DE815551ABB0A4300BA3CC0 /* ARCMacros.h */,
+			);
+			name = ARCMacros;
+			sourceTree = "<group>";
+		};
 		BD215D0A1A8E14F3003FA011 /* SidePanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +370,14 @@
 				BDD527B41A9C4711008AE238 /* ChangePasswordViewController.m */,
 				AE66F6251AAAE510008B32B0 /* ForgotMyPasswordViewController.h */,
 				AE66F6261AAAE510008B32B0 /* ForgotMyPasswordViewController.m */,
+				9DD665061AB08666001B1E2C /* SearchViewController.h */,
+				9DD665071AB08666001B1E2C /* SearchViewController.m */,
+				9DD665091AB08D22001B1E2C /* SearchResultViewController.h */,
+				9DD6650A1AB08D22001B1E2C /* SearchResultViewController.m */,
+				9D756E751AB16E3C001956D6 /* SearchResultDetailViewController.h */,
+				9D756E761AB16E3C001956D6 /* SearchResultDetailViewController.m */,
+				9D24A7421AC441020050E716 /* ForwordActionViewController.h */,
+				9D24A7431AC441020050E716 /* ForwordActionViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -320,6 +403,7 @@
 		BD9992F81A8DFFC900E44624 /* TireForce */ = {
 			isa = PBXGroup;
 			children = (
+				9DE815451ABB059700BA3CC0 /* PopOverController */,
 				BDD7B19F1A8F304F00151B1D /* customCell */,
 				BD215D1B1A8E1954003FA011 /* ViewController */,
 				BD99931F1A8DFFEF00E44624 /* Support */,
@@ -327,6 +411,8 @@
 				BD9992FE1A8DFFC900E44624 /* AppDelegate.m */,
 				BD9993031A8DFFC900E44624 /* Main.storyboard */,
 				BD9993061A8DFFC900E44624 /* Images.xcassets */,
+				9DD1906F1ABC5AAD000BAD77 /* search.png */,
+				9DD190701ABC5AAD000BAD77 /* search1.png */,
 				BD9993081A8DFFC900E44624 /* LaunchScreen.xib */,
 				BD9992F91A8DFFC900E44624 /* Supporting Files */,
 			);
@@ -499,6 +585,10 @@
 				BD5FBC4B1A9493AF009015B6 /* NonEditTableViewCell.m */,
 				BD7D402C1A95FFD000AF22DE /* PricingPartTableViewCell.h */,
 				BD7D402D1A95FFD000AF22DE /* PricingPartTableViewCell.m */,
+				9DD6650C1AB09442001B1E2C /* SearchResultTableViewCell.h */,
+				9DD6650D1AB09442001B1E2C /* SearchResultTableViewCell.m */,
+				9D756E781AB16EA3001956D6 /* SearchResultDetailTableViewCell.h */,
+				9D756E791AB16EA3001956D6 /* SearchResultDetailTableViewCell.m */,
 			);
 			name = customCell;
 			sourceTree = "<group>";
@@ -566,6 +656,7 @@
 					};
 					BD99930E1A8DFFC900E44624 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 29ZN8RS4SZ;
 						TestTargetID = BD9992F51A8DFFC900E44624;
 					};
 				};
@@ -594,8 +685,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DD190711ABC5AAD000BAD77 /* search.png in Resources */,
 				BD9993051A8DFFC900E44624 /* Main.storyboard in Resources */,
 				BD99930A1A8DFFC900E44624 /* LaunchScreen.xib in Resources */,
+				9DD190721ABC5AAD000BAD77 /* search1.png in Resources */,
 				BD9993391A8E000600E44624 /* IQKeyboardManager.bundle in Resources */,
 				BD9993071A8DFFC900E44624 /* Images.xcassets in Resources */,
 			);
@@ -624,10 +717,15 @@
 				BD5FBC4F1A94B0A1009015B6 /* BaseViewController.m in Sources */,
 				BDCD24081A9879DA00A7CCB5 /* MBProgressHUD.m in Sources */,
 				BD99936B1A8E006C00E44624 /* AFHTTPRequestOperationManager.m in Sources */,
+				9D756E7A1AB16EA3001956D6 /* SearchResultDetailTableViewCell.m in Sources */,
+				9DE8154F1ABB05DD00BA3CC0 /* FPTouchView.m in Sources */,
+				9DE8154E1ABB05DD00BA3CC0 /* FPPopoverView.m in Sources */,
 				BD99936A1A8E006C00E44624 /* AFHTTPRequestOperation.m in Sources */,
 				BDF752E01A9623DF006203CF /* AddPartViewController.m in Sources */,
+				9DD6650B1AB08D22001B1E2C /* SearchResultViewController.m in Sources */,
 				BD215D301A8E3B1C003FA011 /* TireQueriesViewController.m in Sources */,
 				BDD527B51A9C4711008AE238 /* ChangePasswordViewController.m in Sources */,
+				9DD6650E1AB09442001B1E2C /* SearchResultTableViewCell.m in Sources */,
 				BD215D191A8E1511003FA011 /* SideMenuViewController.m in Sources */,
 				BD99933D1A8E000600E44624 /* IQTextView.m in Sources */,
 				BD9993421A8E000600E44624 /* IQUIWindow+Hierarchy.m in Sources */,
@@ -657,14 +755,17 @@
 				BDD518911A91EF2F0023B8C4 /* DataConnnectorCell.m in Sources */,
 				BD9993721A8E006C00E44624 /* AFURLSessionManager.m in Sources */,
 				BD9993731A8E006C00E44624 /* UIImageView+AFNetworking.m in Sources */,
+				9DD665081AB08666001B1E2C /* SearchViewController.m in Sources */,
 				BD7C11931A9B1C850010E7DF /* AddSupplierViewController.m in Sources */,
 				BD9993711A8E006C00E44624 /* AFURLResponseSerialization.m in Sources */,
 				BD215D0F1A8E14F3003FA011 /* JASidePanelController.m in Sources */,
 				AE1DE2281AA87A570092134B /* UIViewController+ScrollingNavbar.m in Sources */,
 				BD5FBC521A94CE7F009015B6 /* EditPriceMarkupViewController.m in Sources */,
+				9D756E771AB16E3C001956D6 /* SearchResultDetailViewController.m in Sources */,
 				BD99937D1A8E009100E44624 /* UserInformation.m in Sources */,
 				BD9992FF1A8DFFC900E44624 /* AppDelegate.m in Sources */,
 				BD99934B1A8E003000E44624 /* HUDManager.m in Sources */,
+				9DE815531ABB086A00BA3CC0 /* popViewTableControllerTableViewController.m in Sources */,
 				BD99933C1A8E000600E44624 /* IQSegmentedNextPrevious.m in Sources */,
 				BDD518951A91F3F50023B8C4 /* IQDropDown.m in Sources */,
 				BDDEBC801A9323280029B5AA /* CustomTabBarController.m in Sources */,
@@ -675,6 +776,8 @@
 				BD9992FC1A8DFFC900E44624 /* main.m in Sources */,
 				BD99937B1A8E009100E44624 /* NSString+Validator.m in Sources */,
 				BD215D181A8E1511003FA011 /* SideMenuCell.m in Sources */,
+				9DE8154D1ABB05DD00BA3CC0 /* FPPopoverController.m in Sources */,
+				9D24A7441AC441020050E716 /* ForwordActionViewController.m in Sources */,
 				BD99936D1A8E006C00E44624 /* AFNetworkReachabilityManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

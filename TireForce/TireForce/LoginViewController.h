@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonSignIn;
 @property (weak, nonatomic) IBOutlet UILabel *labelErrorMessage;
 @property (weak, nonatomic) IBOutlet UIButton *butttonRememberMe;
+@property (weak, nonatomic) IBOutlet UIButton *buttonForgotPassword;
+
 @end
 

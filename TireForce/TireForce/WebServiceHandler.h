@@ -40,4 +40,9 @@ typedef void(^CompletionBlockFailure)(AFHTTPRequestOperation *operation,NSError 
 -(void)deleteSupplier:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure;
 -(void)changePassword:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure;
 
+-(void)SearchTire:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure;
+
+-(void)GetPriceForTire:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure;
+
+
 @end

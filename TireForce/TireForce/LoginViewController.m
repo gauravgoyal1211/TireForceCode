@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     {
+        self.buttonForgotPassword.hidden=YES;
         [[_buttonSignIn layer]setMasksToBounds:YES];
         [[_buttonSignIn layer] setCornerRadius:4.0];
         [[TFUtility sharedInstance] setLeftPadding:_textFieldUserName imageName:nil width:2];
@@ -68,7 +69,8 @@
         [_butttonRememberMe setTag:0];
         [_butttonRememberMe setBackgroundImage:nil forState:UIControlStateNormal];
     }
-
+    _textFieldUserName.text=@"crmtesting@mygotire.com";
+    _textFieldPassword.text=@"test123";
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -173,7 +175,8 @@
 }
 
 #pragma mark- -ButtonAction-
-- (IBAction)forgotPasswordAction:(id)sender {
+- (IBAction)forgotPasswordAction:(id)sender
+{
     
 }
 

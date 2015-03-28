@@ -61,10 +61,18 @@
     item4.image = [[UIImage imageNamed:@"price"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
     item4.selectedImage = [[UIImage imageNamed:@"priceSel"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    
+    //tab5
     UITabBarItem *item5 = [tabBar.items objectAtIndex:4];
     item5.image = [[UIImage imageNamed:@"web"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
     item5.selectedImage = [[UIImage imageNamed:@"webSelect"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    
+  //tab6
+   UITabBarItem *item6 = [tabBar.items objectAtIndex:5];
+   item6.image = [[UIImage imageNamed:@"search1"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    item6.selectedImage = [[UIImage imageNamed:@"search"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+
     
     // for ios 7
     [[UITabBar appearance] setTintColor:[UIColor yellowColor
@@ -72,11 +80,7 @@
     [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:39.0/255.0 green:39.0/255.0 blue:39.0/255.0 alpha:1.0]];
 
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark- -UiTabBarcontrollerDelegate-
 
@@ -87,9 +91,29 @@
     NSLog(@"controller title: %@", viewController.title);
     NSLog(@"%@",self.navigationController.viewControllers);
     
+    NSLog(@"%@",tabBarController);
+    
+    NSLog(@"%lu",(unsigned long)tabBarController.selectedIndex);
+    
+    
     if (viewController == tabBarController.moreNavigationController)
     {
 //        tabBarController.moreNavigationController.delegate = self;
+        
+//        
+//        NSLog(@"%lu",(unsigned long)tabBarController.moreNavigationController.selectedIndex);
+//        
+        
+//        
+//        if([tabBarController selectedIndex] == 4)
+//        {
+//            //        [viewController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"selected.png"]withFinishedUnselectedImage:[UIImage imageNamed:@"unselect.png"]];
+//            
+//            [viewController.tabBarItem setSelectedImage:[[UIImage imageNamed:@"search"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+//        }
+        
     }
+    
+    
 }
 @end
