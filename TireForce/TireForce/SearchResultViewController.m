@@ -17,6 +17,7 @@
 {
     NSMutableArray *arrSupplierCount;
     NSMutableDictionary *dictCount;
+    
     NSDictionary *DicForNextController;
     NSMutableArray *arrSupplierDidSelect;
 }
@@ -51,16 +52,20 @@
     NSLog(@"%@",_SupplierjsonDict);
     
     NSLog(@"%@",_dataArr);
-    NSLog(@"%lu",_dataArr.count);
+    NSLog(@"%lu",(unsigned long)_dataArr.count);
     NSLog(@"%@",_SupplierNameDict);
     
-    dictCount=[[NSMutableDictionary alloc] init];
-    arrSupplierCount=[[NSMutableArray alloc]init];
-    arrSupplierDidSelect=[[NSMutableArray alloc]init];
+    //    add an extra  supplier name  to display en extra cell with sum of all vendor.
+    [_SupplierNameDict setObject:@"All Vendors" forKey:@"Sup-extra_id_for_total"];
     
-    for (int i=0; i<_dataArr.count; i++)
+    
+    dictCount   =   [[NSMutableDictionary alloc] init];
+    
+    arrSupplierCount        =   [[NSMutableArray alloc]init];
+    arrSupplierDidSelect    =   [[NSMutableArray alloc]init];
+    
+    for (NSDictionary *dict in _dataArr)
     {
-        NSDictionary *dict=[_dataArr objectAtIndex:i];
         NSString *SupplierId=[dict valueForKey:@"supplierid"];
         [arrSupplierCount addObject:SupplierId];
         NSLog(@"%@",arrSupplierCount);
@@ -69,24 +74,34 @@
    self.uniqueSupplierCountArray = [NSMutableArray array];
     [self.uniqueSupplierCountArray addObjectsFromArray:[[NSSet setWithArray:arrSupplierCount] allObjects]];
     
+    // add an extra suplier id
+    [self.uniqueSupplierCountArray addObject:@"Sup-extra_id_for_total"];
+
     NSCountedSet *set = [[NSCountedSet alloc] initWithArray:arrSupplierCount];
     NSLog(@"%@",set);
     
     NSString *itemStrID;
     
+    NSUInteger total_Sum = 0;
+
     for (id item in set)
     {
         NSLog(@"Name=%@, Count=%lu", item, (unsigned long)[set countForObject:item]);
         
         itemStrID=item,[set countForObject:item];
-
         [dictCount setObject:@([set countForObject:item]) forKey:itemStrID];
+        
+        total_Sum += [set countForObject:item];
     }
-   
-   
+    
+    //  here we set the total sum of all repeated vendor.
+
+    [dictCount setObject:@(total_Sum) forKey:@"Sup-extra_id_for_total"];
+
     NSLog(@"%@",self.uniqueSupplierCountArray);
     [self.SeachTableView reloadData];
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -105,12 +120,11 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   
     return self.uniqueSupplierCountArray.count;
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     static NSString *identifier=@"cell";
     SearchResultTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
     
@@ -122,10 +136,9 @@
     
     NSString *supplireID =[self.uniqueSupplierCountArray objectAtIndex:indexPath.row];
     
-     if([self.SupplierNameDict valueForKey:supplireID]!=nil && ![[self.SupplierNameDict valueForKey:supplireID] isEqual:[NSNull null]])
+    if([self.SupplierNameDict valueForKey:supplireID]!=nil && ![[self.SupplierNameDict valueForKey:supplireID] isEqual:[NSNull null]])
          
     cell.lblSupplierNo.text=[self.SupplierNameDict valueForKey:supplireID];
-    
     
     NSInteger val=[[dictCount valueForKey:supplireID] integerValue];
     cell.lblResultCount.text=[NSString stringWithFormat:@"%ld",(long)val];
@@ -141,21 +154,29 @@
     
      NSString *supplireID =[self.uniqueSupplierCountArray objectAtIndex:indexPath.row];
     
-    for (int i=0; i<_dataArr.count; i++)
+    if ([supplireID isEqualToString:@"Sup-extra_id_for_total"])
     {
-        NSDictionary *dict=[_dataArr objectAtIndex:i];
-        NSString *SupplierId=[dict valueForKey:@"supplierid"];
-       
-        if ([supplireID isEqualToString:SupplierId])
-        {
-            [arrSupplierDidSelect addObject:dict];
-        }
-       
-        
+        SearchResultDetail.SupplierDataArr=_dataArr;
     }
+    else
+    {
+        for (NSInteger i=0; i<_dataArr.count; i++)
+        {
+            NSDictionary *dict=[_dataArr objectAtIndex:i];
+            NSString *SupplierId=[dict valueForKey:@"supplierid"];
+            
+            if ([supplireID isEqualToString:SupplierId])
+            {
+                [arrSupplierDidSelect addObject:dict];
+            }
+        }
+
+        SearchResultDetail.SupplierDataArr=arrSupplierDidSelect;
+    }
+    
     NSLog(@"%@",arrSupplierDidSelect);
     NSLog(@"%lu",(unsigned long)arrSupplierDidSelect.count);
-    SearchResultDetail.SupplierDataArr=arrSupplierDidSelect;
+
     [self.navigationController pushViewController:SearchResultDetail animated:YES];
         
 }

@@ -50,7 +50,7 @@
 //    http://54.68.159.18/UserControl.asmx?op=Login
     NSURL *url = [NSURL URLWithString:@"http://54.68.159.18/UserControl.asmx?op=Login"];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-    NSString *msgLength = [NSString stringWithFormat:@"%lu",  [soapMessage length]];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu",  (unsigned long)[soapMessage length]];
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [theRequest addValue: @"http://tempuri.org/Login" forHTTPHeaderField:@"SOAPAction"];
     [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
@@ -85,7 +85,7 @@
         //    http://54.68.159.18/UserControl.asmx?op=Login
         NSURL *url = [NSURL URLWithString:@"http://54.68.159.18/ReportData.asmx?op=GetSizeReport"];
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-        NSString *msgLength = [NSString stringWithFormat:@"%lu",  [soapMessage length]];
+        NSString *msgLength = [NSString stringWithFormat:@"%lu",  (unsigned long)[soapMessage length]];
         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         [theRequest addValue: @"http://tempuri.org/GetSizeReport" forHTTPHeaderField:@"SOAPAction"];
         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
@@ -120,7 +120,7 @@
         //    http://54.68.159.18/UserControl.asmx?op=Login
         NSURL *url = [NSURL URLWithString:@"http://54.68.159.18/ReportData.asmx?op=GetQuoteReport"];
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-        NSString *msgLength = [NSString stringWithFormat:@"%lu",  [soapMessage length]];
+        NSString *msgLength = [NSString stringWithFormat:@"%lu",  (unsigned long)[soapMessage length]];
         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         [theRequest addValue: @"http://tempuri.org/GetQuoteReport" forHTTPHeaderField:@"SOAPAction"];
         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
@@ -157,7 +157,7 @@
         //    http://54.68.159.18/UserControl.asmx?op=Login
         NSURL *url = [NSURL URLWithString:@"http://54.68.159.18/UserControl.asmx?op=GetUserInfo"];
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-        NSString *msgLength = [NSString stringWithFormat:@"%lu",  [soapMessage length]];
+        NSString *msgLength = [NSString stringWithFormat:@"%lu",  (unsigned long)[soapMessage length]];
         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         [theRequest addValue: @"http://tempuri.org/GetUserInfo" forHTTPHeaderField:@"SOAPAction"];
         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
@@ -214,7 +214,7 @@
         //    http://54.68.159.18/UserControl.asmx?op=Login
         NSURL *url = [NSURL URLWithString:@"http://54.68.159.18/UserControl.asmx?op=SetRunFrom"];
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-        NSString *msgLength = [NSString stringWithFormat:@"%lu",  [soapMessage length]];
+        NSString *msgLength = [NSString stringWithFormat:@"%lu",  (unsigned long)[soapMessage length]];
         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         [theRequest addValue: @"http://tempuri.org/SetRunFrom" forHTTPHeaderField:@"SOAPAction"];
         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
@@ -274,7 +274,7 @@
 
         NSURL *url = [NSURL URLWithString:@"http://54.68.159.18/GetTirePrice.asmx?op=GetPricingModule"];
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-        NSString *msgLength = [NSString stringWithFormat:@"%lu",  [soapMessage length]];
+        NSString *msgLength = [NSString stringWithFormat:@"%lu",  (unsigned long)[soapMessage length]];
         [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         [theRequest addValue: @"http://tempuri.org/GetPricingModule" forHTTPHeaderField:@"SOAPAction"];
         [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
@@ -474,9 +474,6 @@
 
 -(void)SearchTire:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure
 {
-
-
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/xml"];
@@ -486,7 +483,6 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             completionHandlerSuccess(operation,responseObject);
-             
         });
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -494,7 +490,6 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             completionHandlerFailure(operation,error);
         });
-        
     }];
    
 }
@@ -518,6 +513,34 @@
             completionHandlerFailure(operation,error);
         });
         
+    }];
+}
+
+
+-(void)GetTireDetails:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/xml"];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    //http://54.68.159.18/GetTireDetails.asmx/TireDetails
+    
+    [manager POST:@"http://54.68.159.18/GetTireDetails.asmx/TireDetails" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+         NSDictionary* reponseDict = [[XMLDictionaryParser sharedInstance] dictionaryWithData:responseObject];
+            
+            if ([reponseDict[@"success"] boolValue])
+            {
+                completionHandlerSuccess(operation,reponseDict[@"Tire"]);
+            }
+            else
+            {
+                completionHandlerSuccess(operation,nil);
+            }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        completionHandlerFailure(operation,error);
     }];
 }
 

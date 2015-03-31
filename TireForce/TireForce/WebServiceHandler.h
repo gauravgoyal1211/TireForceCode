@@ -10,6 +10,7 @@
 #import "WebServiceConstants.h"
 #import "AFHTTPRequestOperation.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "UIImageView+AFNetworking.h"
 
 typedef void (^CompletionBlockSuccess)(AFHTTPRequestOperation *operation,id responseObject);
 typedef void(^CompletionBlockFailure)(AFHTTPRequestOperation *operation,NSError *error);
@@ -44,5 +45,6 @@ typedef void(^CompletionBlockFailure)(AFHTTPRequestOperation *operation,NSError 
 
 -(void)GetPriceForTire:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure;
 
+-(void)GetTireDetails:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure;
 
 @end

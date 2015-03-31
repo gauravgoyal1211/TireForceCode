@@ -48,7 +48,6 @@
 #pragma mark- -webservice Calling-
 -(void)webSeviceCallingForSearchTire
 {
-    
     NSDictionary *dictSearchTire=@{
                             @"userid":[UserInformation sharedInstance].userId,
                             @"token":[UserInformation sharedInstance].token,

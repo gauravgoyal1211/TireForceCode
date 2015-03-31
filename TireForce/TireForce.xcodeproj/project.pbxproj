@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D24A7441AC441020050E716 /* ForwordActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D24A7431AC441020050E716 /* ForwordActionViewController.m */; };
+		6B191C931ACA835600673056 /* TireDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B191C921ACA835600673056 /* TireDetailHeader.m */; };
+		6B669BA91AC93EF400EEF041 /* TireDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B669BA81AC93EF400EEF041 /* TireDetailViewController.m */; };
+		6BEF228E1ACAC2D200939DAB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEF228D1ACAC2D200939DAB /* MessageUI.framework */; };
 		9D756E771AB16E3C001956D6 /* SearchResultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D756E761AB16E3C001956D6 /* SearchResultDetailViewController.m */; };
 		9D756E7A1AB16EA3001956D6 /* SearchResultDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D756E791AB16EA3001956D6 /* SearchResultDetailTableViewCell.m */; };
 		9DD190711ABC5AAD000BAD77 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1906F1ABC5AAD000BAD77 /* search.png */; };
@@ -98,8 +100,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9D24A7421AC441020050E716 /* ForwordActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForwordActionViewController.h; sourceTree = "<group>"; };
-		9D24A7431AC441020050E716 /* ForwordActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForwordActionViewController.m; sourceTree = "<group>"; };
+		6B191C911ACA835600673056 /* TireDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TireDetailHeader.h; sourceTree = "<group>"; };
+		6B191C921ACA835600673056 /* TireDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TireDetailHeader.m; sourceTree = "<group>"; };
+		6B669BA71AC93EF400EEF041 /* TireDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TireDetailViewController.h; sourceTree = "<group>"; };
+		6B669BA81AC93EF400EEF041 /* TireDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TireDetailViewController.m; sourceTree = "<group>"; };
+		6BEF228D1ACAC2D200939DAB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9D756E751AB16E3C001956D6 /* SearchResultDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultDetailViewController.h; sourceTree = "<group>"; };
 		9D756E761AB16E3C001956D6 /* SearchResultDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultDetailViewController.m; sourceTree = "<group>"; };
 		9D756E781AB16EA3001956D6 /* SearchResultDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultDetailTableViewCell.h; sourceTree = "<group>"; };
@@ -261,6 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BEF228E1ACAC2D200939DAB /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,8 +382,10 @@
 				9DD6650A1AB08D22001B1E2C /* SearchResultViewController.m */,
 				9D756E751AB16E3C001956D6 /* SearchResultDetailViewController.h */,
 				9D756E761AB16E3C001956D6 /* SearchResultDetailViewController.m */,
-				9D24A7421AC441020050E716 /* ForwordActionViewController.h */,
-				9D24A7431AC441020050E716 /* ForwordActionViewController.m */,
+				6B669BA71AC93EF400EEF041 /* TireDetailViewController.h */,
+				6B669BA81AC93EF400EEF041 /* TireDetailViewController.m */,
+				6B191C911ACA835600673056 /* TireDetailHeader.h */,
+				6B191C921ACA835600673056 /* TireDetailHeader.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -385,6 +393,7 @@
 		BD9992ED1A8DFFC900E44624 = {
 			isa = PBXGroup;
 			children = (
+				6BEF228D1ACAC2D200939DAB /* MessageUI.framework */,
 				BD9992F81A8DFFC900E44624 /* TireForce */,
 				BD9993121A8DFFC900E44624 /* TireForceTests */,
 				BD9992F71A8DFFC900E44624 /* Products */,
@@ -763,6 +772,7 @@
 				BD5FBC521A94CE7F009015B6 /* EditPriceMarkupViewController.m in Sources */,
 				9D756E771AB16E3C001956D6 /* SearchResultDetailViewController.m in Sources */,
 				BD99937D1A8E009100E44624 /* UserInformation.m in Sources */,
+				6B669BA91AC93EF400EEF041 /* TireDetailViewController.m in Sources */,
 				BD9992FF1A8DFFC900E44624 /* AppDelegate.m in Sources */,
 				BD99934B1A8E003000E44624 /* HUDManager.m in Sources */,
 				9DE815531ABB086A00BA3CC0 /* popViewTableControllerTableViewController.m in Sources */,
@@ -776,8 +786,8 @@
 				BD9992FC1A8DFFC900E44624 /* main.m in Sources */,
 				BD99937B1A8E009100E44624 /* NSString+Validator.m in Sources */,
 				BD215D181A8E1511003FA011 /* SideMenuCell.m in Sources */,
+				6B191C931ACA835600673056 /* TireDetailHeader.m in Sources */,
 				9DE8154D1ABB05DD00BA3CC0 /* FPPopoverController.m in Sources */,
-				9D24A7441AC441020050E716 /* ForwordActionViewController.m in Sources */,
 				BD99936D1A8E006C00E44624 /* AFNetworkReachabilityManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

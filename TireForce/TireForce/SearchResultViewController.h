@@ -16,7 +16,8 @@
 @property  (weak, nonatomic) IBOutlet UITableView *SeachTableView;
 @property NSMutableArray *dataArr;
 @property(nonatomic,strong) NSMutableArray *uniqueSupplierCountArray;
-@property(strong,nonatomic)NSDictionary *SupplierNameDict;
+
+@property(strong,nonatomic)NSMutableDictionary *SupplierNameDict;
 @property(strong,nonatomic)NSDictionary *SupplierjsonDict;
 
 @end

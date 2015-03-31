@@ -13,7 +13,7 @@
 @implementation UserInformation
 +(instancetype)sharedInstance
 {
-       static UserInformation *obj;
+    static UserInformation *obj;
     if(!obj){
         obj = [[UserInformation alloc] init];
     }
