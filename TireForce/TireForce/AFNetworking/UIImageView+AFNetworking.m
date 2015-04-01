@@ -193,7 +193,10 @@
             
             __strong __typeof(UIImageView *)strongImageView = weakImageView;
             [indicator stopAnimating];
-            [strongImageView setImage:image];
+            
+            [UIView transitionWithView:strongImageView duration:1.0f
+                               options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationCurveEaseInOut
+                            animations:^{ [strongImageView setImage:image]; } completion:NULL];
             
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error)
         {
