@@ -66,15 +66,9 @@
 {
     //    configure the action sheet
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Open In Pos" delegate:self
-                                                    cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Email Specs & Price",
-                                  @"SMS Specs & Price",
-                                  @"Email Specs Only",
-                                  @"SMS Specs Only", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Open In Pos" delegate:self                                                     cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil                                                     otherButtonTitles:@"Email Specs & Price", @"SMS Specs & Price", @"Email Specs Only", @"SMS Specs Only", nil];
     
     [actionSheet showInView:self.view.window];
-    
 }
 
 #pragma UIActionSheet Delegate Methods
@@ -84,19 +78,6 @@
     NSLog(@"From clickedButtonAtIndex- %@", [actionSheet buttonTitleAtIndex:buttonIndex]);
     
     NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
-    
-    //## // when @"EMAIL Specs & PRICE"
-    //Tire: COOPER H/T
-    //Link: http://54.68.159.18/TirePreview.ashx?pcode=90000002935&Mid=37&thumb=0
-    //Price: $300.30
-    //
-    //Tire: FALKEN ZIEX S/TZ-05
-    //Link: http://54.68.159.18/TirePreview.ashx?pcode=28051003&Mid=25&thumb=0
-    //Price: $338.80
-    //
-    //Tire: NEXEN ROADIAN AT PRO RA8
-    //Link: http://54.68.159.18/TirePreview.ashx?pcode=13121NXK&Mid=71&thumb=0
-    //Price: $344.30
     
     if (![buttonTitle isEqualToString:@"Cancel"])
     {
@@ -111,7 +92,7 @@
                    NSDictionary *tireInfoDict =  [_SupplierDataArr objectAtIndex:Key.integerValue];
                     [messageBody appendFormat:@"Tire: %@ %@\n",tireInfoDict[@"Manufacturer"],tireInfoDict[@"Model"]];
                     [messageBody appendFormat:@"Link: http://54.68.159.18/TirePreview.ashx?pcode=%@&Mid=%@&thumb=0\n",tireInfoDict[@"Item"],tireInfoDict[@"TireLibMakeId"]];
-                    [messageBody appendFormat:@"Price: %@\n\n",tireInfoDict[@"Price"]];
+                    [messageBody appendFormat:@"Price: $%@\n\n",tireInfoDict[@"Price"]];
                 }
                 
                 [self showEmailWithMessageBody:messageBody];
@@ -122,18 +103,33 @@
                 {
                     NSDictionary *tireInfoDict =  [_SupplierDataArr objectAtIndex:Key.integerValue];
                     [messageBody appendFormat:@"Tire: %@ %@\n",tireInfoDict[@"Manufacturer"],tireInfoDict[@"Model"]];
-                    [messageBody appendFormat:@"Link: http://54.68.159.18/TirePreview.ashx?pcode=%@&Mid=%@&thumb=0\n",tireInfoDict[@"Item"],tireInfoDict[@"TireLibMakeId"]];
+                    [messageBody appendFormat:@"Link: http://54.68.159.18/TirePreview.ashx?pcode=%@&Mid=%@&thumb=0\n\n",tireInfoDict[@"Item"],tireInfoDict[@"TireLibMakeId"]];
                 }
                 
                 [self showEmailWithMessageBody:messageBody];
             }
-            else if ([buttonTitle isEqualToString:@"Email Specs Only"])
+            else if ([buttonTitle isEqualToString:@"SMS Specs & Price"])
             {
-               
+                for (NSString*Key in checkDict)
+                {
+                    NSDictionary *tireInfoDict =  [_SupplierDataArr objectAtIndex:Key.integerValue];
+                    [messageBody appendFormat:@"Tire: %@ %@\n",tireInfoDict[@"Manufacturer"],tireInfoDict[@"Model"]];
+                    [messageBody appendFormat:@"Link: http://54.68.159.18/TirePreview.ashx?pcode=%@&Mid=%@&thumb=0\n",tireInfoDict[@"Item"],tireInfoDict[@"TireLibMakeId"]];
+                    [messageBody appendFormat:@"Price: $%@\n\n",tireInfoDict[@"Price"]];
+                }
+
+                [self showSMSWithSMSBody:messageBody];
             }
             else if ([buttonTitle isEqualToString:@"SMS Specs Only"])
             {
-                
+                for (NSString*Key in checkDict)
+                {
+                    NSDictionary *tireInfoDict =  [_SupplierDataArr objectAtIndex:Key.integerValue];
+                    [messageBody appendFormat:@"Tire: %@ %@\n",tireInfoDict[@"Manufacturer"],tireInfoDict[@"Model"]];
+                    [messageBody appendFormat:@"Link: http://54.68.159.18/TirePreview.ashx?pcode=%@&Mid=%@&thumb=0\n\n",tireInfoDict[@"Item"],tireInfoDict[@"TireLibMakeId"]];
+                }
+
+                [self showSMSWithSMSBody:messageBody];
             }
         }
         else
@@ -303,8 +299,11 @@
     }
 }
 
-- (void)showSMS:(NSString*)tireDetailUrl withPrice:(NSString*)price
+- (void)showSMSWithSMSBody:(NSString*)smsBody
 {
+    
+    NSLog(@"smsBody %@",smsBody);
+    
     if(![MFMessageComposeViewController canSendText])
     {
         UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -312,45 +311,20 @@
         return;
     }
     
-    NSString *message = [NSString stringWithFormat:@"Tire Details URL %@ \n  Price = %@", tireDetailUrl, price];
-
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;
-//    [messageController setRecipients:recipents];
-    [messageController setBody:message];
+
+    [messageController setBody:smsBody];
     
-    // Present message view controller on screen
+//  Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
 }
 
 - (void)showEmailWithMessageBody:(NSString*)messageBody
 {
-//## // when @"EMAIL Specs & PRICE"
-//Tire: COOPER H/T
-//Link: http://54.68.159.18/TirePreview.ashx?pcode=90000002935&Mid=37&thumb=0
-//Price: $300.30
-//    
-//Tire: FALKEN ZIEX S/TZ-05
-//Link: http://54.68.159.18/TirePreview.ashx?pcode=28051003&Mid=25&thumb=0
-//Price: $338.80
-//    
-//Tire: NEXEN ROADIAN AT PRO RA8
-//Link: http://54.68.159.18/TirePreview.ashx?pcode=13121NXK&Mid=71&thumb=0
-//Price: $344.30
-
     
-//## // when @"EMAIL Specs ONLY"
+    NSLog(@"messageBody %@",messageBody);
 
-//Tire: COOPER H/T
-//Link: http://54.68.159.18/TirePreview.ashx?pcode=90000002935&Mid=37&thumb=0
-//    
-//Tire: FALKEN ZIEX S/TZ-05
-//Link: http://54.68.159.18/TirePreview.ashx?pcode=28051003&Mid=25&thumb=0
-//    
-//Tire: NEXEN ROADIAN AT PRO RA8
-//Link: http://54.68.159.18/TirePreview.ashx?pcode=13121NXK&Mid=71&thumb=0
-
-    
     if ([MFMailComposeViewController canSendMail])
     {
         // Email Subject
@@ -417,26 +391,8 @@
             [alert show];
         }break;
     }
-    [self dismissModalViewControllerAnimated:YES];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-//-(void)getOption
-//NSString *requestTypeOptionsToString(nsinte options)
-//{
-//    switch(options) {
-//        case RequestTypeGET:
-//            return @"GET";
-//        case RequestTypePOST:
-//            return @"POST";
-//        case RequestTypePUT:
-//            return @"PUT";
-//        case RequestTypeDELETE:
-//            return @"DELETE";
-//        default:
-//            break;
-//    }
-//    return nil;
-//}
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 CANOPUS5. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface SearchResultDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface SearchResultDetailViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property(strong,nonatomic)NSMutableArray *SupplierDataArr;
 

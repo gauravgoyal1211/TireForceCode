@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 CANOPUS5. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface TireDetailViewController : UIViewController
+@interface TireDetailViewController : BaseViewController
+
 @property(nonatomic,strong) NSDictionary* selectedSearchResultDict;
+
 @end

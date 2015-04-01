@@ -66,12 +66,10 @@
         
         UIImage *tireImage =[UIImage imageNamed:@"Tire Force_icon 1024x1024"];
         
-        [headerView.tireImageView1 loadImageByURL:responseForTireDetails[@"imageURL"] placeholderImage:tireImage];
-        [headerView.tireImageView2 loadImageByURL:responseForTireDetails[@"imageURL"] placeholderImage:tireImage];
-        [headerView.tireImageView3 loadImageByURL:responseForTireDetails[@"imageURL"] placeholderImage:tireImage];
-        [headerView.tireImageView4 loadImageByURL:responseForTireDetails[@"imageURL"] placeholderImage:tireImage];
-
-        
+        [headerView.tireImageView1 loadImageByURL:responseForTireDetails[@"ImageURL"] placeholderImage:tireImage];
+        [headerView.tireImageView2 loadImageByURL:responseForTireDetails[@"ThumbnailURL"] placeholderImage:tireImage];
+        [headerView.tireImageView3 loadImageByURL:responseForTireDetails[@"ThumbnailURL"] placeholderImage:tireImage];
+        [headerView.tireImageView4 loadImageByURL:responseForTireDetails[@"ThumbnailURL"] placeholderImage:tireImage];
         
         reusableview = headerView;
     }
@@ -120,28 +118,44 @@
     } completion:nil];
 }
 
-/* updates the header size */
+/* updates the header size according to device in ratio */
 
 -(void)updateHeaderSize
 {
-    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)_tireDetailCollectionView.collectionViewLayout;
+    CGFloat size ;
     
-    CGFloat size = CGRectGetWidth([[UIScreen mainScreen] bounds])*0.7;
+    const BOOL iOS7_1OrLower = floor(NSFoundationVersionNumber) <=  NSFoundationVersionNumber_iOS_7_1;
+    
+    if (iOS7_1OrLower)
+    {
+        // this is for ios7.1 or lower version
+        if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+            size = CGRectGetHeight([[UIScreen mainScreen] bounds])*0.7;
+        } else {
+            size = CGRectGetWidth([[UIScreen mainScreen] bounds])*0.7;
+        }
+    }
+    else
+    {
+        // this is for ios 8.0 or later version
+        size = CGRectGetWidth([[UIScreen mainScreen] bounds])*0.7;
+    }
+    
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)_tireDetailCollectionView.collectionViewLayout;
     [flowLayout setHeaderReferenceSize:CGSizeMake(size, size)];
 }
-
 
 #pragma mark- Webservice Calling Methods
 #pragma mark-
 
 -(void)callWebserviceForTireDetails
 {
-    NSDictionary *paramForTireDetails=@{
-                                        @"userid":[UserInformation sharedInstance].userId,
-                                        @"token":[UserInformation sharedInstance].token,
-                                        @"Makeid":_selectedSearchResultDict[@"TireLibMakeId"],
-                                        @"pcode":_selectedSearchResultDict[@"Item"]
-                                        };
+    NSDictionary *paramForTireDetails= @{
+                                         @"userid":[UserInformation sharedInstance].userId,
+                                         @"token":[UserInformation sharedInstance].token,
+                                         @"Makeid":_selectedSearchResultDict[@"TireLibMakeId"],
+                                         @"pcode":_selectedSearchResultDict[@"Item"]
+                                         };
     
     [HUDManager showHUDWithText:PleaseWait];
     
@@ -162,10 +176,14 @@
                 [tireDetails addObject:@{@"Model":_selectedSearchResultDict[@"Model"]}];
                 [tireDetails addObject:@{@"Size":_selectedSearchResultDict[@"Size"]}];
                 [tireDetails addObject:@{@"Make":responseObject[@"Make"]}];
-
+                
                 [tireDetails addObject:@{@"Availability":_selectedSearchResultDict[@"Availability"]}];
-                [tireDetails addObject:@{@"Price":_selectedSearchResultDict[@"Price"]}];
-                [tireDetails addObject:@{@"Retail":_selectedSearchResultDict[@"Retail"]}];
+                
+                NSString *price = [NSString stringWithFormat:@"$%@",_selectedSearchResultDict[@"Price"]];
+                NSString *retail = [NSString stringWithFormat:@"$%@",_selectedSearchResultDict[@"Retail"]];
+                
+                [tireDetails addObject:@{@"Price":price}];
+                [tireDetails addObject:@{@"Retail":retail}];
                 
                 [self.tireDetailCollectionView reloadData];
             }
@@ -184,6 +202,5 @@
         });
     }];
 }
-
 
 @end

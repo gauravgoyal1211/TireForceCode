@@ -6,14 +6,12 @@
 //  Copyright (c) 2015 CANOPUS5. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-
 @interface SearchResultViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @property  (weak, nonatomic) IBOutlet UITableView *SeachTableView;
+
 @property NSMutableArray *dataArr;
 @property(nonatomic,strong) NSMutableArray *uniqueSupplierCountArray;
 

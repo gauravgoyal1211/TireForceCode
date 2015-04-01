@@ -42,9 +42,6 @@
     // Do any additional setup after loading the view.
 }
 
-
-
-
 #pragma mark- -webservice Calling-
 -(void)webSeviceCallingForSearchTire
 {
@@ -162,6 +159,7 @@
         
     }else
     {
+        [self.view endEditing:YES];
         [self webSeviceCallingForSearchTire];
     }
  
