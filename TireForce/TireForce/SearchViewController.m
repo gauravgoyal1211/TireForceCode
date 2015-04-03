@@ -38,6 +38,8 @@
     [[_ButtonSearch layer] setMasksToBounds:YES];
     [[_ButtonSearch layer] setCornerRadius:4.0];
     
+    self.title=@"Quote";
+
     [self callWebServiceForName];
     // Do any additional setup after loading the view.
 }

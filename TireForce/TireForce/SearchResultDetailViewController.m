@@ -34,9 +34,10 @@
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
-    
+
+    self.title=@"Tire Details";
+
     checkDict = [[NSMutableDictionary alloc] init];
     
     self.automaticallyAdjustsScrollViewInsets=NO;
@@ -62,13 +63,24 @@
     
 }
 
+// here overwrite the setter method
+// NOTE:- do not use self.SupplierDataArr in this setter method
+
+-(void)setSupplierDataArr:(NSMutableArray *)SupplierDataArr
+{
+    NSSortDescriptor *sortByName = [NSSortDescriptor sortDescriptorWithKey:@"Price" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+    NSArray *sortedArray = [SupplierDataArr sortedArrayUsingDescriptors:sortDescriptors];
+    
+    _SupplierDataArr = [[NSMutableArray alloc] initWithArray:sortedArray];
+}
+
 -(void)rightBarButtonItemHandler
 {
-    //    configure the action sheet
-    
+    // configure the action sheet
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Open In Pos" delegate:self                                                     cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil                                                     otherButtonTitles:@"Email Specs & Price", @"SMS Specs & Price", @"Email Specs Only", @"SMS Specs Only", nil];
     
-    [actionSheet showInView:self.view.window];
+    [actionSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
 
 #pragma UIActionSheet Delegate Methods
@@ -92,6 +104,11 @@
                    NSDictionary *tireInfoDict =  [_SupplierDataArr objectAtIndex:Key.integerValue];
                     [messageBody appendFormat:@"Tire: %@ %@\n",tireInfoDict[@"Manufacturer"],tireInfoDict[@"Model"]];
                     [messageBody appendFormat:@"Link: http://54.68.159.18/TirePreview.ashx?pcode=%@&Mid=%@&thumb=0\n",tireInfoDict[@"Item"],tireInfoDict[@"TireLibMakeId"]];
+                    
+                    // for hyperlink
+                    // NSString * hyperlink = [NSString stringWithFormat:@"http://54.68.159.18/TirePreview.ashx?pcode=%@&Mid=%@&thumb=0",tireInfoDict[@"Item"],tireInfoDict[@"TireLibMakeId"]];
+                    // [messageBody appendFormat:@"Link: <a href=\"%@\">%@</a><br>",hyperlink,hyperlink];
+                    
                     [messageBody appendFormat:@"Price: $%@\n\n",tireInfoDict[@"Price"]];
                 }
                 
@@ -185,7 +202,9 @@
         if([dict valueForKey:@"Availability"]!=nil && ![[dict valueForKey:@"Availability"] isEqual:[NSNull null]])
             
             AvailabilityCG = [[dict valueForKey:@"Availability"] floatValue];
-        Availabilitystr =[NSString stringWithFormat:@"(%0.0f in Stock)",AvailabilityCG];
+        //commented because of updation
+//      Availabilitystr =[NSString stringWithFormat:@"(%0.0f in Stock)",AvailabilityCG];
+        Availabilitystr =[NSString stringWithFormat:@"(avail=%0.0f)",AvailabilityCG];
         
         // NSLog(@"%@",Availabilitystr);
         

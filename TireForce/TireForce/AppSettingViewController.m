@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"Setup";
+    self.title=@"Site Setup";
     switchArray=[[NSMutableArray alloc] init];
     [self callWebServiceForGetUserInfo];
     // Do any additional setup after loading the view.

@@ -12,8 +12,6 @@
 		6BEF228E1ACAC2D200939DAB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEF228D1ACAC2D200939DAB /* MessageUI.framework */; };
 		9D756E771AB16E3C001956D6 /* SearchResultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D756E761AB16E3C001956D6 /* SearchResultDetailViewController.m */; };
 		9D756E7A1AB16EA3001956D6 /* SearchResultDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D756E791AB16EA3001956D6 /* SearchResultDetailTableViewCell.m */; };
-		9DD190711ABC5AAD000BAD77 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1906F1ABC5AAD000BAD77 /* search.png */; };
-		9DD190721ABC5AAD000BAD77 /* search1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD190701ABC5AAD000BAD77 /* search1.png */; };
 		9DD665081AB08666001B1E2C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD665071AB08666001B1E2C /* SearchViewController.m */; };
 		9DD6650B1AB08D22001B1E2C /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6650A1AB08D22001B1E2C /* SearchResultViewController.m */; };
 		9DD6650E1AB09442001B1E2C /* SearchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD6650D1AB09442001B1E2C /* SearchResultTableViewCell.m */; };
@@ -109,8 +107,6 @@
 		9D756E761AB16E3C001956D6 /* SearchResultDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultDetailViewController.m; sourceTree = "<group>"; };
 		9D756E781AB16EA3001956D6 /* SearchResultDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultDetailTableViewCell.h; sourceTree = "<group>"; };
 		9D756E791AB16EA3001956D6 /* SearchResultDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultDetailTableViewCell.m; sourceTree = "<group>"; };
-		9DD1906F1ABC5AAD000BAD77 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
-		9DD190701ABC5AAD000BAD77 /* search1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search1.png; sourceTree = "<group>"; };
 		9DD665061AB08666001B1E2C /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		9DD665071AB08666001B1E2C /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		9DD665091AB08D22001B1E2C /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
@@ -420,8 +416,6 @@
 				BD9992FE1A8DFFC900E44624 /* AppDelegate.m */,
 				BD9993031A8DFFC900E44624 /* Main.storyboard */,
 				BD9993061A8DFFC900E44624 /* Images.xcassets */,
-				9DD1906F1ABC5AAD000BAD77 /* search.png */,
-				9DD190701ABC5AAD000BAD77 /* search1.png */,
 				BD9993081A8DFFC900E44624 /* LaunchScreen.xib */,
 				BD9992F91A8DFFC900E44624 /* Supporting Files */,
 			);
@@ -694,10 +688,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DD190711ABC5AAD000BAD77 /* search.png in Resources */,
 				BD9993051A8DFFC900E44624 /* Main.storyboard in Resources */,
 				BD99930A1A8DFFC900E44624 /* LaunchScreen.xib in Resources */,
-				9DD190721ABC5AAD000BAD77 /* search1.png in Resources */,
 				BD9993391A8E000600E44624 /* IQKeyboardManager.bundle in Resources */,
 				BD9993071A8DFFC900E44624 /* Images.xcassets in Resources */,
 			);

@@ -36,6 +36,12 @@
     [self callWebserviceForTireDetails];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.tireDetailCollectionView reloadData];
+}
+
 #pragma UICollectionView DataSource methods
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

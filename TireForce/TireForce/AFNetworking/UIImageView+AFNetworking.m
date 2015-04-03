@@ -183,9 +183,10 @@
         // adding the Activity Indicator
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         indicator.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-        indicator.color = [UIColor darkGrayColor];
+        indicator.color = [UIColor yellowColor];
+        indicator.color = [UIColor colorWithRed:212.0f/255.0f green:174.0f/255.0f blue:1.0f/255.0f alpha:1.0f];
         indicator.backgroundColor = [UIColor clearColor];
-//        [indicator setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
+
         [indicator startAnimating];
         [self addSubview:indicator];
         

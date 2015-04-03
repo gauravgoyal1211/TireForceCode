@@ -43,23 +43,23 @@
     
     //tab1
     UITabBarItem *item1 = [tabBar.items objectAtIndex:0];
-    item1.image = [[UIImage imageNamed:@"dash-board"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    item1.selectedImage = [[UIImage imageNamed:@"dash-boardSel"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    item1.image = [[UIImage imageNamed:@"search1"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    item1.selectedImage = [[UIImage imageNamed:@"search"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     //tab2
     UITabBarItem *item2 = [tabBar.items objectAtIndex:1];
-    item2.image = [[UIImage imageNamed:@"setting"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    item2.selectedImage = [[UIImage imageNamed:@"settingSel"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    item2.image = [[UIImage imageNamed:@"connector"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    item2.selectedImage = [[UIImage imageNamed:@"connectorSel"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     //tab3
     UITabBarItem *item3 = [tabBar.items objectAtIndex:2];
-    item3.image = [[UIImage imageNamed:@"connector"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    item3.selectedImage = [[UIImage imageNamed:@"connectorSel"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    item3.image = [[UIImage imageNamed:@"price"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    item3.selectedImage = [[UIImage imageNamed:@"priceSel"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     //tab4
     UITabBarItem *item4 = [tabBar.items objectAtIndex:3];
-    item4.image = [[UIImage imageNamed:@"price"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    item4.selectedImage = [[UIImage imageNamed:@"priceSel"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    item4.image = [[UIImage imageNamed:@"dash-board"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    item4.selectedImage = [[UIImage imageNamed:@"dash-boardSel"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     //tab5
     UITabBarItem *item5 = [tabBar.items objectAtIndex:4];
@@ -69,8 +69,8 @@
     
   //tab6
    UITabBarItem *item6 = [tabBar.items objectAtIndex:5];
-   item6.image = [[UIImage imageNamed:@"search1"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    item6.selectedImage = [[UIImage imageNamed:@"search"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    item6.image = [[UIImage imageNamed:@"setting"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    item6.selectedImage = [[UIImage imageNamed:@"settingSel"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
 
     

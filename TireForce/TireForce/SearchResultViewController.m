@@ -49,6 +49,8 @@
 {
     [super viewDidLoad];
     
+    self.title=@"Quote Details";
+
     NSLog(@"%@",_SupplierjsonDict);
     
     NSLog(@"%@",_dataArr);
