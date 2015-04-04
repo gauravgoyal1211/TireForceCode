@@ -21,7 +21,7 @@
     [super viewDidLoad];
    
      self.automaticallyAdjustsScrollViewInsets = NO;
-     self.title=@"Home";
+     self.title=@"Stats";
    
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStyleDone target:self action:@selector(logoutAction:)];
     
@@ -53,10 +53,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-     static NSString *identifier=@"home";
+     static NSString *identifier=@"stats";
     
-   
     DashboardTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil)
     {

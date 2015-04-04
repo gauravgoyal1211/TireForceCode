@@ -36,7 +36,8 @@
     [self callWebserviceForTireDetails];
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     
     [self.tireDetailCollectionView reloadData];

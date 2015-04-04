@@ -380,11 +380,11 @@
             </objects>
             <point key="canvasLocation" x="-760" y="-254"/>
         </scene>
-        <!--Home-->
+        <!--Stats-->
         <scene sceneID="AAG-Ef-l2B">
             <objects>
                 <navigationController storyboardIdentifier="CentreNavigationID" id="yxf-FO-CXC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="Jbf-wW-41y"/>
+                    <tabBarItem key="tabBarItem" title="Stats" id="Jbf-wW-41y"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="9GZ-bF-8Mg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -514,7 +514,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="home" rowHeight="40" id="Mai-vd-hyD" customClass="DashboardTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="stats" rowHeight="40" id="Mai-vd-hyD" customClass="DashboardTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mai-vd-hyD" id="bG6-rN-TyS">

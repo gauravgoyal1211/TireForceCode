@@ -18,15 +18,30 @@
     [self getFontAccordingTodevice:_Price];
     [self getFontAccordingTodevice:_Availability];
     [self getFontAccordingTodevice:_Manufacture];
-
+    
+    // UPDATE CONSTRAINT IF IT IS RUNNING ON IPAD
+    for(NSLayoutConstraint *constraint in _Price.constraints)
+    {
+        if((constraint.firstItem == _Price) && (constraint.firstAttribute == NSLayoutAttributeWidth) )
+        {
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+                constraint.constant = 130;
+            [_Price setNeedsUpdateConstraints];
+            [UIView animateWithDuration:0.0 animations:^{
+                [_Price layoutIfNeeded];
+            }];
+            
+            break;
+        }
+    }
 }
 
 -(void)getFontAccordingTodevice:(UILabel*)lable
 {
     UIFont *font;
-    
+
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        font = [UIFont fontWithName:lable.font.fontName size:16.0f];
+        font = [UIFont fontWithName:lable.font.fontName size:14.0f];
     else
         font = [UIFont fontWithName:lable.font.fontName size:12.f];
 
