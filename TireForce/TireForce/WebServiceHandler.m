@@ -44,10 +44,10 @@
                              "<IsMh5>%d</IsMh5>\n"
                              "<token>%@</token>\n"
                              "</Login>\n"
-                       
+                             
                              "</soap:Body>\n"
                              "</soap:Envelope>\n",name, password, NO, token];
-//    http://54.68.159.18/UserControl.asmx?op=Login
+    //    http://54.68.159.18/UserControl.asmx?op=Login
     NSURL *url = [NSURL URLWithString:@"http://54.68.159.18/UserControl.asmx?op=Login"];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
     NSString *msgLength = [NSString stringWithFormat:@"%lu",  (unsigned long)[soapMessage length]];
@@ -59,7 +59,7 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:theRequest];
     operation.responseSerializer = [AFXMLParserResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-       dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             completionHandlerSuccess(operation,responseObject);
         });
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -176,25 +176,25 @@
         }];
         [[NSOperationQueue mainQueue] addOperation:operation];
     }
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    NSString *urlString=@"http://54.68.159.18//UserControl.asmx/GetUserInfo";
-//    [manager GET:urlString parameters:parameters
-//          success:^(AFHTTPRequestOperation *operation, id responseObject)
-//     {
-//         dispatch_async(dispatch_get_main_queue(), ^{
-//             completionHandlerSuccess(operation,responseObject);
-//         });
-//     }
-//          failure:
-//     ^(AFHTTPRequestOperation *operation, NSError *error) {
-//         NSLog(@"Error: %@", error);
-//         
-//         dispatch_async(dispatch_get_main_queue(), ^{
-//             completionHandlerFailure(operation,error);
-//         });
-//         
-//     }];
-//
+    //    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    //    NSString *urlString=@"http://54.68.159.18//UserControl.asmx/GetUserInfo";
+    //    [manager GET:urlString parameters:parameters
+    //          success:^(AFHTTPRequestOperation *operation, id responseObject)
+    //     {
+    //         dispatch_async(dispatch_get_main_queue(), ^{
+    //             completionHandlerSuccess(operation,responseObject);
+    //         });
+    //     }
+    //          failure:
+    //     ^(AFHTTPRequestOperation *operation, NSError *error) {
+    //         NSLog(@"Error: %@", error);
+    //
+    //         dispatch_async(dispatch_get_main_queue(), ^{
+    //             completionHandlerFailure(operation,error);
+    //         });
+    //
+    //     }];
+    //
 }
 -(void)SetRunValueInAppSettingWithParameter:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure
 {
@@ -243,17 +243,17 @@
     manager.responseSerializer=[AFHTTPResponseSerializer serializer];
     
     [manager POST:@"http://54.68.159.18/GetTirePrice.asmx/GetPricingModule" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             completionHandlerSuccess(operation,responseObject);
         });
-
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         dispatch_async(dispatch_get_main_queue(), ^{
             completionHandlerFailure(operation,error);
         });
-
+        
     }];
 }
 
@@ -271,7 +271,7 @@
                                  "</GetPricingModule>\n"
                                  "</soap:Body>\n"
                                  "</soap:Envelope>\n",uid,token];
-
+        
         NSURL *url = [NSURL URLWithString:@"http://54.68.159.18/GetTirePrice.asmx?op=GetPricingModule"];
         NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
         NSString *msgLength = [NSString stringWithFormat:@"%lu",  (unsigned long)[soapMessage length]];
@@ -293,8 +293,61 @@
         }];
         [[NSOperationQueue mainQueue] addOperation:operation];
     }
-
+    
 }
+
+-(void)checkConnection:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure
+{
+    
+    NSString *userid      =  parameters[@"userid"];
+    NSString *User        =  parameters[@"User"];
+    NSString *pass        =  parameters[@"pass"];
+    NSString *supplierid  =  parameters[@"supplierid"];
+    NSString *token       =  parameters[@"token"];
+    
+    if ([pass isEqualToString:@"<null>"]||[pass isEqualToString:@"(null)>"]||[pass isEqual:[NSNull null]]) {
+        pass = @"";
+    }
+    
+    NSString *soapMessage = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                             "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" "<soap:Body>\n"
+                             "<CheckConnection xmlns=\"http://tempuri.org/\">\n"
+                             "<userid>%@</userid>\n"
+                             "<User>%@</User>\n"
+                             "<pass>%@</pass>\n"
+                             "<supplierid>%@</supplierid>\n"
+                             "<token>%@</token>\n"
+                             "</CheckConnection>\n"
+                             "</soap:Body>\n"
+                             "</soap:Envelope>\n",userid,User,pass,supplierid,token];
+    
+    NSURL *url = [NSURL URLWithString:@"http://54.68.159.18/PartnerCoasterAccount.asmx?op=CheckConnection"];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu",  (unsigned long)[soapMessage length]];
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue: @"http://tempuri.org/CheckConnection" forHTTPHeaderField:@"SOAPAction"];
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:theRequest];
+    operation.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            NSDictionary* reponseDict = [[XMLDictionaryParser sharedInstance] dictionaryWithParser:responseObject];
+            completionHandlerSuccess(operation,reponseDict[@"soap:Body"][@"CheckConnectionResponse"]);
+
+        });
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandlerFailure(operation,error);
+        });
+    }];
+    
+    [[NSOperationQueue mainQueue] addOperation:operation];
+}
+
 -(void)updateTirePrice:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -380,7 +433,7 @@
         });
         
     }];
-
+    
 }
 -(void)addSupplier:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure
 {
@@ -491,7 +544,7 @@
             completionHandlerFailure(operation,error);
         });
     }];
-   
+    
 }
 
 -(void)GetPriceForTire:(NSDictionary *)parameters completionHandlerSuccess:(CompletionBlockSuccess)completionHandlerSuccess completionHandlerFailure:(CompletionBlockFailure)completionHandlerFailure
@@ -527,16 +580,16 @@
     
     [manager POST:@"http://54.68.159.18/GetTireDetails.asmx/TireDetails" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-         NSDictionary* reponseDict = [[XMLDictionaryParser sharedInstance] dictionaryWithData:responseObject];
-            
-            if ([reponseDict[@"success"] boolValue])
-            {
-                completionHandlerSuccess(operation,reponseDict[@"Tire"]);
-            }
-            else
-            {
-                completionHandlerSuccess(operation,nil);
-            }
+        NSDictionary* reponseDict = [[XMLDictionaryParser sharedInstance] dictionaryWithData:responseObject];
+        
+        if ([reponseDict[@"success"] boolValue])
+        {
+            completionHandlerSuccess(operation,reponseDict[@"Tire"]);
+        }
+        else
+        {
+            completionHandlerSuccess(operation,nil);
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

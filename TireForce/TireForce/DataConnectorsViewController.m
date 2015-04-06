@@ -14,8 +14,8 @@
 #import "UserInformation.h"
 #import "AddSupplierViewController.h"
 #import "XMLDictionary.h"
-@interface DataConnectorsViewController ()
-{
+
+@interface DataConnectorsViewController () {
     NSMutableArray *arrayInfo;
     NSMutableArray *supplierArray;
     NSMutableArray *AvailableSuppliers;
@@ -23,6 +23,7 @@
     NSMutableDictionary *dictForAvailableSuppliersInDataConnectorsOnly;
     BOOL needToUpdateNow;
 }
+
 @end
 
 @implementation DataConnectorsViewController
@@ -55,14 +56,14 @@
 #pragma mark- -TableViewDelegateDatasource-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-           if(self.editing)
-        {
-           return 180;
-        }else
-        {
-            return 74;
-        }
-   }
+    if(self.editing)
+    {
+        return 180;
+    }else
+    {
+        return 74;
+    }
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int count=(int)[supplierArray count];
@@ -82,67 +83,72 @@
 {
     static NSString *identifier=@"cell";
     
-        if(self.editing==NO)
+    if(self.editing==NO)
+    {
+        static NSString *identi = @"nonEditCell";
+        NonEditTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identi];
+        if (cell == nil)
         {
-              static NSString *identi = @"nonEditCell";
-            NonEditTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identi];
-            if (cell == nil)
-            {
-                cell = [[NonEditTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                     reuseIdentifier:identi];
-            }
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            NSDictionary *temp=[supplierArray objectAtIndex:indexPath.row];
-            
-            NSString *suplierId=[temp valueForKey:@"supplierid"];
-            NSString *supplierName=[NSString stringWithFormat:@"%@",[dictForAvailableSuppliersInDataConnectorsOnly valueForKey:suplierId]];
-            cell.labelSupplierName.text=supplierName;
-
-            NSString *userName=[NSString stringWithFormat:@"%@",[temp valueForKey:@"User"]];
-            cell.labelUserName.text=userName;
-            
-            return cell;
-
-            
-            return nil;
-        }else
-        {
-            NSLog(@"%ld",(long)indexPath.row);
-            DataConnnectorCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
-            if (cell == nil)
-            {
-                cell = [[DataConnnectorCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                     reuseIdentifier:identifier];
-            }
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            [cell.textFieldSupplierName setItemList:[dictForAvailableSuppliersInDataConnectorsOnly allValues]];
-            
-            // Supplier Name
-            NSDictionary *temp=[supplierArray objectAtIndex:indexPath.row];
-            NSString *suplierId=[temp valueForKey:@"supplierid"];
-            NSString *supplierName=[NSString stringWithFormat:@"%@",[dictForAvailableSuppliersInDataConnectorsOnly valueForKey:suplierId]];
-            cell.textFieldSupplierName.text=supplierName;
-            cell.ButtonSave.tag=indexPath.row;
-            
-            // User Name
-            NSString *userName=[NSString stringWithFormat:@"%@",[temp valueForKey:@"User"]];
-            cell.textFieldUserName.text=userName;
-   
-//            NSString *password=[NSString stringWithFormat:@"%@",[temp valueForKey:@"pass"]];
-            cell.textFieldPassword.text=@"...";
-            
-            NSInteger val=[[temp valueForKey:@"active"] integerValue];
-            cell.buttonToActiveState.tag=val;
-            
-            BOOL isActive=[[temp valueForKey:@"active"] boolValue];
-            if(isActive==YES)
-            {
-                [cell.buttonToActiveState setBackgroundImage:[UIImage imageNamed:@"checkGray"] forState:UIControlStateNormal];
-            }else
-                [cell.buttonToActiveState setBackgroundImage:nil forState:UIControlStateNormal];
-            return cell;
+            cell = [[NonEditTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                               reuseIdentifier:identi];
         }
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        NSDictionary *temp=[supplierArray objectAtIndex:indexPath.row];
+        
+        NSString *suplierId=[temp valueForKey:@"supplierid"];
+        NSString *supplierName=[NSString stringWithFormat:@"%@",[dictForAvailableSuppliersInDataConnectorsOnly valueForKey:suplierId]];
+        cell.labelSupplierName.text=supplierName;
+        
+        NSString *userName=[NSString stringWithFormat:@"%@",[temp valueForKey:@"User"]];
+        cell.labelUserName.text=userName;
+        
+        return cell;
+        
+        
+        return nil;
+    }else
+    {
+        NSLog(@"%ld",(long)indexPath.row);
+        DataConnnectorCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil)
+        {
+            cell = [[DataConnnectorCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                             reuseIdentifier:identifier];
+        }
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [cell.textFieldSupplierName setItemList:[dictForAvailableSuppliersInDataConnectorsOnly allValues]];
+        
+        // Supplier Name
+        NSDictionary *temp=[supplierArray objectAtIndex:indexPath.row];
+        NSString *suplierId=[temp valueForKey:@"supplierid"];
+        NSString *supplierName=[NSString stringWithFormat:@"%@",[dictForAvailableSuppliersInDataConnectorsOnly valueForKey:suplierId]];
+        cell.textFieldSupplierName.text=supplierName;
+        cell.ButtonSave.tag=indexPath.row;
+        
+        // User Name
+        NSString *userName = [NSString stringWithFormat:@"%@",[temp valueForKey:@"User"]];
+        cell.textFieldUserName.text=userName;
+        
+        //            NSString *password=[NSString stringWithFormat:@"%@",[temp valueForKey:@"pass"]];
+        cell.textFieldPassword.text=@"...";
+        
+        NSInteger val=[[temp valueForKey:@"active"] integerValue];
+        cell.buttonToActiveState.tag=val;
+        
+        BOOL isActive=[[temp valueForKey:@"active"] boolValue];
+        if(isActive==YES)
+        {
+            [cell.buttonToActiveState setBackgroundImage:[UIImage imageNamed:@"checkGray"] forState:UIControlStateNormal];
+        }else
+            [cell.buttonToActiveState setBackgroundImage:nil forState:UIControlStateNormal];
+        
+        [cell.buttonTest addTarget:self action:@selector(testAction:) forControlEvents:UIControlEventTouchUpInside];
+        cell.buttonTest.tag = indexPath.row;
+        
+        return cell;
+    }
 }
+
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -159,10 +165,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 }
+
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     return [UIView new];
 }
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // No editing style if not editing or the index path is nil.
@@ -170,6 +178,7 @@
     {
         return UITableViewCellEditingStyleNone;
     }
+    
     return UITableViewCellEditingStyleDelete;
 }
 
@@ -183,6 +192,7 @@
         NSString *token=[UserInformation sharedInstance].token;
         NSString *ID=[NSString stringWithFormat:@"%@",[temp valueForKey:@"ID"]];
         NSDictionary *dict=@{@"userid":userId,@"token":token,@"ID":ID};
+        
         [[WebServiceHandler webServiceHandler] deleteSupplier:dict completionHandlerSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             [HUDManager hideHUD];
             NSIndexPath *deletedIndexPath=[NSIndexPath indexPathForRow:indexPath.row inSection:0];
@@ -195,6 +205,7 @@
         
     }
 }
+
 #pragma mark- -BarButtonStyleAction-
 -(void)EditTable:(id)sender
 {
@@ -214,7 +225,6 @@
         [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStyleDone];
         [self.navigationItem.leftBarButtonItem setTitle:@"Done"];
     }
-    
 }
 
 -(void)AddUser:(id)sender
@@ -224,17 +234,69 @@
     addSupplier.delegate=self;
     [self.navigationController pushViewController:addSupplier animated:YES];
 }
-#pragma mark- -CheckMarkButtonAction-
-- (IBAction)checkMarkAction:(UIButton *)sender {
+
+- (void)testAction:(UIButton *)sender
+{
+    NSDictionary *selectedSupplierInfo = (NSDictionary*)[supplierArray objectAtIndex:sender.tag];
+    NSString *userid      =   [NSString stringWithFormat:@"%@",selectedSupplierInfo[@"ID"]];
+    NSString *User        =   [NSString stringWithFormat:@"%@",selectedSupplierInfo[@"User"]];
+    NSString *pass        =   [NSString stringWithFormat:@"%@",selectedSupplierInfo[@"pass"]];
+
+    NSString *supplierid  =   [NSString stringWithFormat:@"%@",selectedSupplierInfo[@"supplierid"]];
+    NSString *token       =   [UserInformation sharedInstance].token;
     
+    NSDictionary *paramsDic =@{
+                               @"userid":userid,
+                               @"User":User,
+                               @"pass":pass,
+                               @"supplierid":supplierid,
+                               @"token":token
+                               };
+    
+    [HUDManager showHUDWithText:PleaseWait];
+    
+    [[WebServiceHandler webServiceHandler] checkConnection:paramsDic completionHandlerSuccess:^(AFHTTPRequestOperation *operation,  NSDictionary* responseObject) {
+        [HUDManager hideHUD];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           
+            NSString* messageStr ;
+            
+            if ([responseObject[@"CheckConnectionResult"] boolValue])
+            {
+                 messageStr = @"valid Supplier.";
+            }
+            else
+            {
+             messageStr = @"Invalid Supplier.";
+            }
+            
+            [[[UIAlertView alloc] initWithTitle:@"Message" message:messageStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        });
+        
+        
+    } completionHandlerFailure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [HUDManager hideHUD];
+            
+            [[[UIAlertView alloc] initWithTitle:@"Message" message:@"There is some server error, please try later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        });
+    }];
+    
+}
+
+#pragma mark- -CheckMarkButtonAction-
+- (IBAction)checkMarkAction:(UIButton *)sender
+{
     if(sender.tag==0)
     {
         [sender setBackgroundImage:[UIImage imageNamed:@"checkGray"] forState:UIControlStateNormal];
         sender.tag=1;
-   }else
+    }
+    else
     {
         [sender setBackgroundImage:nil forState:UIControlStateNormal];
-         sender.tag=0;
+        sender.tag=0;
     }
 }
 - (IBAction)saveButtonAction:(UIButton *)sender {
@@ -279,7 +341,7 @@
         }];
     }
     @catch (NSException *exception) {
-     
+        
         
     }
     @finally {
@@ -303,12 +365,12 @@
     [HUDManager showHUDWithText:PleaseWait];
     [[WebServiceHandler webServiceHandler] getDataConnectorSuppliers:dict completionHandlerSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *error = nil;
-//        NSDictionary *dict= [[[XMLDictionaryParser sharedInstance] dictionaryWithData:responseObject] valueForKey:@"__text"];
-//        NSData *data = [dict.description dataUsingEncoding:NSUTF8StringEncoding];
-//        NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
-//                                                                     options:kNilOptions
-//                                                                       error:&error];
-
+        //        NSDictionary *dict= [[[XMLDictionaryParser sharedInstance] dictionaryWithData:responseObject] valueForKey:@"__text"];
+        //        NSData *data = [dict.description dataUsingEncoding:NSUTF8StringEncoding];
+        //        NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
+        //                                                                     options:kNilOptions
+        //                                                                       error:&error];
+        
         NSString *jsonString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         jsonString = [jsonString stringByReplacingOccurrencesOfString:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>" withString:@""];
         jsonString = [jsonString stringByReplacingOccurrencesOfString:@"<string xmlns=\"http://tempuri.org/\">" withString:@""];
@@ -337,11 +399,11 @@
 }
 
 /*
-#pragma mark - Navigation
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 @end
